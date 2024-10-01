@@ -1,3 +1,5 @@
-Welcome to R-DAVIS! 
-
-This is the 'README' file for your class repository -- a place where you can share notes for your project. Typically when you start a new project this can be a good place to provide an overview of what's happening in this R project. 
+Shawna Kelley 
+She/Her/Hers
+Spatial Ecology and Modeling
+  git config --global user.email "slkelley@ucdavis.edu"
+  git config --global user.name "Shawna Kelley"
