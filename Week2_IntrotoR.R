@@ -68,3 +68,17 @@ elephant2_lb > elephant1_lb
 myelephants <- c(elephant1_lb, elephant2_lb)
 
 which(myelephants == max(myelephants))
+
+
+a <- 1
+b <- 2
+c <- a + b
+b <- 4
+a <- b
+c <- a
+c
+
+elephant1_kg
+elephant2_lb
+elephant1_lb
+elephant1_lb < elephant2_lb
