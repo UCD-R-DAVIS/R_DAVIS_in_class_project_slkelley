@@ -5,7 +5,8 @@ hw2 <- replace(hw2, c(4,12,22,27), NA)
 hw2
 hw2[!is.na(hw2)]
 prob1 <- hw2[!is.na(hw2)]
-prob1 <- prob1[prob1 >= 14 & prob1 <= 38]
+prob1 <- prob1[prob1 >= 14 & prob1 <= 38] #put it ALL together: prob1 <- hw2[!is.na(hw2) & hw2 >= 14 & hw2 <= 38]
+
 prob1
 times3 <- prob1 * 3
 times3
