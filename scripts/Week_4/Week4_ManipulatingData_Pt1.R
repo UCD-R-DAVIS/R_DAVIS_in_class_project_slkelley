@@ -91,12 +91,73 @@ surveys %>% mutate(weight_kg = weight/1000, weight_kg2 = weight_kg * 2)
 surveys %>% filter(!is.na(weight)) %>% mutate(weight_kg = weight/1000) %>% head()
 #head() only shows the first 6 remember? Just have to add it into the equation, unless you are making a new data.frame (then can just head(new data frame) individually
 
-#Challenge
+
+####Challenge----
+
+library(tidyverse)
+surveys <- read.csv("data/portal_data_joined.csv")
+surveys
 
 hindfoot_half <- surveys %>% filter(!is.na(hindfoot_length)) %>% mutate(hindfoot_half = hindfoot_length/2)%>%select(species_id, hindfoot_half)
 hindfoot_half
 hindfoot_half <- hindfoot_half %>% filter(hindfoot_half < 30)
 hindfoot_half
-
+tail(hindfoot_half)
 
 ###Group By & Summarize----
+#split-apply-combine -> split data into groups, apply analysis, combine results (group_by() function)
+
+#calculate summary statistics: like mean weight
+surveys %>% 
+  group_by(sex) %>% 
+  summarize(mean_weight = mean(weight, na.rm = TRUE))
+
+#tbl_df vs data frame is info in table doesn't run off the screen. neatly contained.
+
+#group by multiple columns
+surveys %>% 
+  group_by(sex, species_id) %>% 
+  summarize(mean_weight = mean(weight, na.rm = TRUE))
+
+#NaN are given first, so to remove:
+surveys %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(sex, species_id) %>% 
+  summarize(mean_weight = mean(weight))
+
+#if want to print:name the above something or add %>% print(n=15) or any n = to # of rows you want
+
+##Can summarize multiple variables:
+surveys %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(sex, species_id) %>% 
+  summarize(mean_weight = mean(weight), min_weight = min(weight))
+
+
+####Challenge----
+
+rm(heavyweight_a)
+rm(weight_kg)
+
+surveys %>% 
+  filter(!is.na(weight)) %>% 
+  select
+  group_by(year) %>% 
+    arrange() #wrong --need to create a summary and then mutate with parameters all in one, don't create new variables bcuz turns them into functions and can't group_by(functions) - so why above I have 2 rm() functions created bcuz I originally created new variables
+  
+#1.  
+surveys %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(year) %>% 
+  summarize(max_weight_g = max(weight)) %>% 
+  mutate(max_weight_kg = max_weight_g/1000) %>% 
+  arrange()
+  
+#2.
+surveys %>% 
+  group_by(sex) %>% 
+  count()
+#OR
+surveys %>% 
+  group_by(sex) %>% 
+  summarize(n = n())
