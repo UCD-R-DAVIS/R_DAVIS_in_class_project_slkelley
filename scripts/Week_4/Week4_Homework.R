@@ -18,7 +18,7 @@ biggest_critters <-
   group_by(species_id, sex) %>% 
   summarize(weight_max = max(weight), weight_min = min(weight)) %>% 
   arrange(weight_max, weight_min)
-biggest_critters
+biggest_critters #(add desc or -sign before) weight_max so you get bigggest weights to show first - when using arrange() function
 
 #4
 surveys %>% 
@@ -27,6 +27,12 @@ tally(species_id, sex, weight)
 surveys %>%
   group_by(species_id, sex, weight, plot_id) %>%
   tally()
+
+surveys %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(taxa) %>% 
+  tally() %>% 
+  arrange(-n)
 
 sum(is.na(surveys$weight) |
       is.na(surveys$sex) |
