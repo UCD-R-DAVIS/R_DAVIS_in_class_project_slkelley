@@ -29,13 +29,14 @@ view(tyler_running)
 ##5----
 ##stopped here after getting tripped up on how to solve for steps_per_minute averages and use the pivot function
 
+##After midterm:
 tyler_running_steps <- tyler_running %>% 
-  pivot_wider(names_from = "form", values_from = "steps_per_minute") %>% 
-  pivot_wider(names_from = "pace", values_from = "steps_per_minute") %>% 
   group_by("pace", "form") %>% 
-  summarize(ave_steps = ave(steps_per_minute)) %>% 
-  select(pace, form)
-view(tyler_running_steps)
+  summarize(ave_steps = mean(steps_per_minute)) %>% 
+  pivot_wider(names_from = "form", values_from = "ave_steps") %>% 
+  select(tyler_running_steps, form, slow, medium, fast)
+  
+##Question - Keeps telling me column "form" doesn't exist. I don't understand this error. 
 
 ##6----
 
