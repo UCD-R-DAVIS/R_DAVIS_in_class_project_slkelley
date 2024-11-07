@@ -33,10 +33,10 @@ view(tyler_running)
 tyler_running_steps <- tyler_running %>% 
   group_by("pace", "form") %>% 
   summarize(ave_steps = mean(steps_per_minute)) %>% 
-  pivot_wider(names_from = "form", values_from = "ave_steps") %>% 
+  pivot_wider(id_cols = "form", names_from = "pace", values_from = "ave_steps") %>% 
   select(tyler_running_steps, form, slow, medium, fast)
   
-##Question - Keeps telling me column "form" doesn't exist. I don't understand this error. 
+##Question - Keeps telling me column "form" doesn't exist. I don't understand this error. Then I used id_cols and now it says pace doesn't exist
 
 ##6----
-
+#look up in answer and try to understand better

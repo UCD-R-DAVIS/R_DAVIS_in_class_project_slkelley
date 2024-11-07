@@ -59,3 +59,10 @@ Run `rlang::last_trace()` to see where the error occurred.
 
 + ggtitle("life expectancy of five countries")+
   xlab("country") + ylab("life expectancy")
+
+gapminder %>% filter(country %in% c("Brazil", "China", "El Salvador", "Niger", "United States")) %>% 
+  ggplot(aes(x = country, y = lifeexp))+
+  geom_boxplot() +
+  geom_jitter()+ 
+  ggtitle("life expectancy of five countries")+
+  xlab("country") + ylab("life expectancy")
