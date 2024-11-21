@@ -44,3 +44,6 @@ mloa4 %>%
   xlab("Month") +
   ylab("Mean temperature (degrees C") +
   theme_classic()
+
+#khroma package makes circular color schemes so if you want data at 0 to be similar to the 24 bcuz its a 24 hour clock as an example use this...
+
